@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-embed="on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#FFFFFF">
+<title>51Talk 創作者拍攝指南</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400..900&display=swap">
+<style>
+  /* 頁面自己帶這一條：Artifact 外框會代管，搬到獨立網頁就沒有了 */
+  [hidden] { display: none !important; }
+
+  /* 51Talk 2027 創作者拍攝指南。母題是「上課」：課表節次、螢光筆劃重點、聯絡簿格線、老師的紅筆圈 */
+  :root {
+    --paper:     #FFFFFF;
+    --card:      #F1F2F6;   /* 淺灰：卡片底 */
+    --ink:       #1B2444;   /* 海軍藍：文字與粗框 */
+    --ink-2:     #454D6E;
+    --ink-3:     #626A8A;
+    --rule:      #DADDE8;
+    --sun:       #FFC72C;   /* 51Talk 黃：主色、選中狀態、成果段 */
+    --sun-soft:  #FFF1BF;   /* 淺黃：你的版本（本篇專屬內容） */
+    --teal:      #0A7373;   /* 青綠：小標、上課實況段 */
+    --teal-soft: #D8EEEC;
+    --teal-line: #9CCBC8;   /* 聯絡簿的格線 */
+    --pen:       #C2372B;   /* 老師的紅筆：必守 */
+    --pen-soft:  #FBEAE7;
+
+    --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Heiti TC", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --gutter: 18px;
+    --maxw: 680px;
+    --r: 14px;
+
+    /* 一律白底：不跟手機深色模式切換；only 也擋掉 Chrome 的自動深色化 */
+    color-scheme: only light;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; overflow-wrap: anywhere; }
+  img { display: block; max-width: 100%; }
+  ul, ol, dl, dd { list-style: none; margin: 0; padding: 0; }
+  p { margin: 0; }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: .001s !important; animation-duration: .001s !important; } }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gutter); }
+  .sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  /* ── 頂部列：品牌名＋目前企劃 pill＋閱讀進度＋章節 pill ── */
+  .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+  .progress i { display: block; height: 3px; width: 0; background: var(--sun); }
+  .topline { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: var(--maxw); margin: 0 auto; padding: 8px var(--gutter) 0; }
+  .brandmark { flex: 0 0 auto; font-weight: 900; font-size: 15px; letter-spacing: .02em; }
+  .ep-pill { display: inline-flex; align-items: center; gap: 6px; min-width: 0; background: var(--sun); color: var(--ink); border: 0; border-radius: 999px; padding: 4px 13px 4px 11px; font-size: 13px; font-weight: 700; line-height: 1.6; cursor: pointer; }
+  .ep-pill b { flex: 0 0 auto; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .ep-pill span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ep-pill.is-static { cursor: default; padding-inline: 13px; }
+  .navrow { display: flex; gap: 6px; overflow-x: auto; max-width: var(--maxw); margin: 0 auto; padding: 8px var(--gutter) 9px; scrollbar-width: none; }
+  .navrow::-webkit-scrollbar { display: none; }
+  .navrow button { flex: 0 0 auto; background: none; cursor: pointer; border: 1px solid var(--rule); border-radius: 999px; padding: 3px 11px; font-size: 13px; color: var(--ink-2); white-space: nowrap; }
+  .navrow button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+  /* ── 首屏 ── */
+  .hero { padding-block: 34px 6px; }
+  .eyebrow { font-weight: 700; font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--teal); }
+  .hero h1 { margin: 0; }
+  .signword { display: block; margin-top: 8px; font-weight: 900; font-size: clamp(64px, 21vw, 112px); line-height: 1.08; letter-spacing: -.02em; }
+  .signword span { padding: 0 .06em; margin-left: -.06em; background: linear-gradient(transparent 60%, var(--sun) 60% 91%, transparent 91%); }
+  .hero .sub { display: block; margin-top: 8px; font-weight: 900; font-size: clamp(24px, 6.8vw, 34px); line-height: 1.35; }
+  .hero .lede { margin-top: 14px; font-size: 17px; font-weight: 500; line-height: 1.7; max-width: 30em; }
+  .hero .lede-2 { margin-top: 6px; font-size: 15px; color: var(--ink-2); max-width: 32em; }
+  /* 規格速覽：像課表表頭的三格 */
+  .specs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 22px; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; }
+  .specs > div { padding: 9px 8px 10px; text-align: center; min-width: 0; }
+  .specs > div + div { border-left: 1px solid var(--ink); }
+  .specs dt { font-size: 11.5px; font-weight: 700; letter-spacing: .14em; color: var(--teal); }
+  .specs dd { margin-top: 1px; font-size: 14px; font-weight: 700; line-height: 1.5; }
+
+  /* ── 章節 ── */
+  section { padding-top: 56px; scroll-margin-top: 92px; }
+  .sec-eyebrow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; line-height: 1.7; border-radius: 4px; padding: 0 8px; }
+  .tag.mine { background: var(--sun); }
+  .tag.all { background: var(--card); color: var(--ink-2); }
+  .tag.pen { background: var(--pen); color: #fff; }
+  h2 { margin: 8px 0 0; font-weight: 900; font-size: 26px; line-height: 1.35; text-wrap: balance; }
+  h2 .nw { display: inline-block; }
+  h2 .hl { background: linear-gradient(transparent 58%, var(--sun) 58% 92%, transparent 92%); padding: 0 2px; }
+  .sec-sub { margin-top: 8px; color: var(--ink-2); font-size: 15px; max-width: 34em; }
+  h3 { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.5; }
+  .subhead { margin: 30px 0 0; font-size: 15.5px; font-weight: 900; line-height: 1.5; }
+  .subhead small { margin-left: 6px; font-size: 13px; font-weight: 500; color: var(--ink-3); }
+  .subnote { margin-top: 4px; font-size: 14.5px; color: var(--ink-2); }
+
+  /* 標籤在上、內容在下的列；寬螢幕變成左右兩欄 */
+  .kv { margin-top: 14px; }
+  .kv > div { padding: 12px 0; border-top: 1px solid var(--rule); }
+  .kv > div:last-child { border-bottom: 1px solid var(--rule); }
+  .kv dt { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--teal); }
+  .kv dd { margin-top: 2px; font-size: 15px; line-height: 1.7; }
+  .kv.strong dt { font-size: 15px; font-weight: 900; letter-spacing: 0; color: var(--ink); }
+  .kv.strong dd { color: var(--ink-2); }
+
+  .ticks { margin-top: 10px; display: flex; flex-direction: column; gap: 7px; }
+  .ticks li { position: relative; padding-left: 17px; font-size: 15px; line-height: 1.7; }
+  .ticks li::before { content: ""; position: absolute; left: 2px; top: .68em; width: 7px; height: 7px; background: var(--ink); border-radius: 2px; }
+
+  /* 範例影片輪播：GitHub 版（html[data-embed="on"]）嵌 Instagram，Artifact 版擋外站 iframe，改顯示連結卡 */
+  .reels { display: flex; gap: 12px; align-items: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; margin: 18px calc(var(--gutter) * -1) 0; padding: 2px var(--gutter) 6px; scroll-padding-inline: var(--gutter); scrollbar-width: none; }
+  .reels::-webkit-scrollbar { display: none; }
+  .reel { flex: 0 0 min(86%, 326px); margin: 0; scroll-snap-align: start; min-width: 0; }
+  .reel .instagram-media { min-width: 0 !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; border-radius: 14px !important; border: 1px solid var(--rule) !important; }
+  /* Instagram 在背景分頁不會回報高度，給個下限免得縮成一條 */
+  .reel iframe.instagram-media { min-height: 520px; }
+  .reel blockquote.instagram-media { display: grid; place-items: center; min-height: 420px; background: var(--card); padding: 16px; text-align: center; font-size: 14px; }
+  .reel-card { position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; aspect-ratio: 9 / 16; max-width: 100%; padding: 16px; background: var(--ink); color: #fff; border-radius: 14px; text-decoration: none; }
+  .reel-card .play { position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%); width: 64px; height: 64px; border-radius: 50%; background: var(--sun); }
+  .reel-card .play::after { content: ""; position: absolute; left: 26px; top: 20px; border-left: 18px solid var(--ink); border-top: 12px solid transparent; border-bottom: 12px solid transparent; }
+  .reel-card b { font-weight: 700; font-size: 16px; }
+  .reel-card span { font-size: 13px; opacity: .8; }
+  .reel figcaption { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-top: 8px; font-size: 13.5px; }
+  .reel figcaption b { font-weight: 700; min-width: 0; }
+  .reel figcaption a { flex: 0 0 auto; color: var(--ink-2); }
+  .reels-ctl { display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin-top: 10px; }
+  .reels-ctl span { font-weight: 700; font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; min-width: 3.2em; text-align: center; }
+  .reels-ctl button { width: 38px; height: 38px; border-radius: 50%; cursor: pointer; border: 2px solid var(--ink); background: var(--paper); font-size: 18px; font-weight: 700; line-height: 1; }
+  .reels-ctl button:disabled { opacity: .3; cursor: default; }
+
+  /* ── 選你的企劃 ── */
+  .picker { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; margin-top: 18px; }
+  .ep { display: grid; grid-template-columns: 60px minmax(0, 1fr) auto; gap: 12px; align-items: center; width: 100%; text-align: left; cursor: pointer; background: var(--paper); border: 2px solid var(--rule); border-radius: var(--r); padding: 8px 12px 8px 8px; transition: border-color .15s ease, background .15s ease; }
+  .ep:hover { border-color: var(--ink-3); }
+  .ep[aria-checked="true"] { background: var(--sun-soft); border-color: var(--ink); }
+  .ep .th { display: block; width: 60px; height: 60px; border-radius: 10px; overflow: hidden; background: var(--card); }
+  .ep .th img { width: 100%; height: 100%; object-fit: cover; }
+  .ep .tx { min-width: 0; }
+  .ep .no { margin-right: 6px; font-weight: 900; font-size: 12px; letter-spacing: .04em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .ep .nm { font-weight: 900; font-size: 17px; line-height: 1.4; }
+  .ep .ag { display: block; margin-top: 1px; font-size: 13.5px; line-height: 1.55; color: var(--ink-2); }
+  .ep .mk { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--rule); display: grid; place-items: center; }
+  .ep[aria-checked="true"] .mk { background: var(--sun); border-color: var(--ink); }
+  .ep[aria-checked="true"] .mk::after { content: ""; width: 10px; height: 6px; margin-top: -3px; border-left: 2.5px solid var(--ink); border-bottom: 2.5px solid var(--ink); transform: rotate(-45deg); }
+
+  /* ── 這支片在拍什麼 ── */
+  .about { margin-top: 16px; padding: 18px 18px 19px; border-radius: var(--r); background: var(--sun-soft); }
+  .about-head { display: flex; align-items: center; gap: 12px; }
+  .about-head img { flex: 0 0 auto; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--ink); }
+  .about-head > div { min-width: 0; line-height: 1.4; }
+  .about-head small { display: block; font-size: 12px; font-weight: 700; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .about-head b { display: block; font-size: 16px; font-weight: 900; }
+  .about h3 { margin-top: 14px; font-size: 22px; font-weight: 900; line-height: 1.42; text-wrap: balance; }
+  .about > p { margin-top: 8px; font-size: 15.5px; line-height: 1.8; }
+  .about-facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .about-facts > div { display: flex; align-items: baseline; gap: 7px; min-width: 0; background: var(--paper); border-radius: 999px; padding: 3px 13px; }
+  .about-facts dt { flex: 0 0 auto; font-size: 12px; font-weight: 700; color: var(--teal); }
+  .about-facts dd { font-size: 14px; font-weight: 700; }
+
+  /* ── 三件事一定要拍到 ── */
+  .must3 { margin-top: 18px; counter-reset: m; border: 2px solid var(--ink); border-radius: var(--r); overflow: hidden; }
+  .must3 li { counter-increment: m; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 13px; padding: 15px 16px 16px 14px; }
+  .must3 li + li { border-top: 1px solid var(--rule); }
+  .must3 li::before { content: counter(m); width: 36px; height: 36px; border-radius: 8px; background: var(--sun); display: grid; place-items: center; font-weight: 900; font-size: 19px; line-height: 1; }
+  .must3 b { display: block; font-size: 16.5px; font-weight: 900; line-height: 1.5; }
+  .must3 p { margin-top: 3px; font-size: 14.5px; line-height: 1.7; color: var(--ink-2); }
+
+  /* ── 影片架構：比例條。寬度＝各段秒數（end − start），分隔線用內陰影畫，才不會吃掉寬度 ── */
+  .bar { display: flex; height: 50px; margin-top: 20px; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; }
+  .bar > button { -webkit-appearance: none; appearance: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 0; margin: 0; padding: 0; border: 0; border-radius: 0; cursor: pointer; background: var(--card); color: var(--ink); line-height: 1; }
+  .bar > button + button { box-shadow: inset 1.5px 0 0 var(--ink); }
+  .bar > button.sun { background: var(--sun); }
+  .bar > button.teal { background: var(--teal); color: #fff; }
+  .bar > button:hover { filter: brightness(.95); }
+  .bar > button:focus-visible { outline-color: var(--ink); outline-offset: -4px; }
+  .bar b { font-size: 13px; font-weight: 900; }
+  .bar span { font-size: 10.5px; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .bar-cap { margin-top: 8px; font-size: 13px; color: var(--ink-2); }
+  /* 節次表：像課表一樣一節一列 */
+  .tt { margin-top: 16px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+  .tt li + li { border-top: 1px solid var(--rule); }
+  .tt button { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 11px; align-items: center; width: 100%; padding: 9px 2px; background: none; border: 0; text-align: left; cursor: pointer; }
+  .tt .no { width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; background: var(--card); font-size: 14px; font-weight: 900; line-height: 1; }
+  .tt .sun .no { background: var(--sun); }
+  .tt .teal .no { background: var(--teal); color: #fff; }
+  .tt .nm { font-size: 15.5px; font-weight: 700; line-height: 1.5; }
+  .tt .tm { font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ── 每一段怎麼拍 ── */
+  .segs { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+  .segc { border-radius: var(--r); background: var(--card); padding: 15px 16px 17px; scroll-margin-top: 96px; }
+  .segc.sun { background: var(--sun-soft); }
+  .segc.teal { background: var(--teal-soft); }
+  .segc > header { display: flex; align-items: center; gap: 12px; }
+  .segc > header > div { min-width: 0; }
+  .pd { flex: 0 0 auto; display: inline-flex; align-items: baseline; gap: 4px; padding: 6px 10px 7px; border-radius: 9px; background: var(--ink); color: #fff; font-size: 12px; font-weight: 700; line-height: 1; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .pd b { font-size: 21px; font-weight: 900; }
+  .segc.sun .pd { background: var(--sun); color: var(--ink); }
+  .segc.teal .pd { background: var(--teal); }
+  .segc h3 { font-size: 19px; font-weight: 900; line-height: 1.4; }
+  .segc .tm { font-size: 13px; font-weight: 500; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .segc dl { margin-top: 13px; display: flex; flex-direction: column; gap: 11px; }
+  .segc dt { font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--teal); }
+  .segc dd { margin-top: 1px; font-size: 15px; line-height: 1.7; }
+  .segc .pt { display: inline-block; margin-top: 3px; background: var(--paper); border-radius: 7px; padding: 1px 10px; font-weight: 700; }
+  .segc .tip { padding-top: 11px; border-top: 1px dashed color-mix(in srgb, var(--ink) 30%, transparent); }
+  .segc .tip dt { color: var(--ink); }
+  /* 字卡：聲音說明後面另起一行，前面掛「字卡」小標 */
+  .zk { display: block; margin-top: 4px; font-weight: 700; }
+  .zk b { display: inline-block; margin-right: 7px; vertical-align: 1px; font-size: 11px; font-weight: 700; letter-spacing: .06em; line-height: 1.6; border: 1px solid currentColor; border-radius: 4px; padding: 0 5px; }
+
+  /* ── 開場與五支短片 ── */
+  .opencard { margin-top: 12px; padding: 17px 18px 20px; border-radius: var(--r); background: var(--ink); color: #fff; }
+  .opencard small { display: block; font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--sun); }
+  .opencard p { margin-top: 5px; font-size: 22px; font-weight: 900; line-height: 1.45; text-wrap: balance; }
+  .cuts { margin-top: 12px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .cuts li { background: var(--card); border-radius: 12px; padding: 12px 14px 13px; min-width: 0; }
+  .cuts .ch { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .cuts .ch b { font-size: 16px; font-weight: 900; }
+  .cuts .ch span { flex: 0 0 auto; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .cuts p { margin-top: 3px; font-size: 14.5px; line-height: 1.7; }
+  .cuts .from { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 9px; font-size: 12.5px; color: var(--ink-2); }
+  .chip { display: inline-grid; place-items: center; min-width: 30px; height: 30px; padding: 0 9px; border: 0; border-radius: 7px; background: var(--paper); font-size: 13.5px; font-weight: 900; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+  button.chip { cursor: pointer; }
+  button.chip.sun { background: var(--sun); }
+  button.chip.teal { background: var(--teal); color: #fff; }
+  .chip.new { font-size: 12.5px; font-weight: 700; box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .callout { margin-top: 18px; padding: 14px 16px 16px; border: 2px solid var(--ink); border-radius: var(--r); background: var(--sun-soft); }
+  .callout h3 { font-size: 16px; font-weight: 900; }
+  .callout p { margin-top: 4px; font-size: 15px; line-height: 1.75; }
+  .callout .ticks { margin-top: 8px; }
+  .callout.plain { border: 0; background: var(--card); }
+
+  /* ── 之前與之後 ── */
+  .ba { margin-top: 18px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .ba > div { min-width: 0; border-radius: var(--r); padding: 14px 16px 16px; background: var(--card); }
+  .ba > div.after { background: var(--sun-soft); }
+  .ba small { display: inline-block; font-size: 12px; font-weight: 900; letter-spacing: .12em; line-height: 1.7; border-radius: 5px; padding: 0 9px; background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .ba .after small { background: var(--sun); box-shadow: none; }
+  .ba p { margin-top: 7px; font-size: 15px; line-height: 1.75; }
+
+  /* ── 可以講的賣點 ── */
+  .pkg { display: inline-flex; align-items: baseline; gap: 8px; max-width: 100%; margin-top: 14px; padding: 5px 15px 6px 13px; border: 2px solid var(--ink); border-radius: 999px; background: var(--sun-soft); font-size: 13.5px; line-height: 1.5; }
+  .pkg b { font-size: 15.5px; font-weight: 900; }
+  .say { margin-top: 10px; display: flex; flex-direction: column; gap: 10px; }
+  .say li { border-radius: var(--r); padding: 13px 16px 15px; background: var(--card); }
+  .say li.use { background: var(--sun-soft); }
+  .say .sh { display: flex; justify-content: space-between; align-items: baseline; gap: 4px 10px; flex-wrap: wrap; }
+  .say .sh b { font-size: 16.5px; font-weight: 900; line-height: 1.5; }
+  .say .sh em { flex: 0 0 auto; font-style: normal; font-size: 11.5px; font-weight: 700; line-height: 1.7; border-radius: 5px; padding: 0 8px; }
+  .say li.use .sh em { background: var(--ink); color: #fff; }
+  .say li.ok .sh em { background: var(--paper); color: var(--ink-2); }
+  .say .st { margin-top: 3px; font-size: 14.5px; line-height: 1.7; color: var(--ink-2); }
+  .say .how { margin-top: 10px; padding-top: 9px; border-top: 1px solid color-mix(in srgb, var(--ink) 18%, transparent); font-size: 15px; line-height: 1.7; }
+  .say .how span { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--teal); }
+  /* 另一個課包的賣點：灰階、虛線框，不放可以怎麼講 */
+  .say li.no { background: none; padding-block: 11px 12px; border: 1.5px dashed var(--ink-3); color: var(--ink-3); filter: grayscale(1); }
+  .say li.no .sh b { font-weight: 700; text-decoration: line-through; text-decoration-thickness: 1.5px; }
+  .say li.no .sh em { background: var(--card); color: var(--ink-2); }
+  .say li.no .st { color: var(--ink-3); font-size: 13.5px; }
+
+  /* ── 說法對照：像批改過的學習單，圈是請這樣講、叉是請不要 ── */
+  .keep { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; align-items: center; }
+  .keep > span:first-child { flex: 0 0 100%; font-size: 13px; font-weight: 700; color: var(--pen); }
+  .keep .kw { font-size: 14.5px; font-weight: 900; background: var(--sun); border-radius: 6px; padding: 2px 11px; }
+  .dict-head { display: none; }
+  .dict { margin-top: 20px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+  .dict > li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 5px; padding: 13px 0 14px; }
+  .dict > li + li { border-top: 1px solid var(--rule); }
+  .dict .tp { font-size: 12.5px; font-weight: 900; letter-spacing: .08em; color: var(--teal); }
+  .dict .yes, .dict .nope { position: relative; padding-left: 28px; font-size: 15px; line-height: 1.65; }
+  .dict .yes { font-weight: 700; }
+  .dict .nope { color: var(--ink-2); }
+  .dict .yes::before { content: ""; position: absolute; left: 2px; top: .34em; width: 16px; height: 16px; border: 2.5px solid var(--teal); border-radius: 50%; }
+  .dict .nope::before, .dict .nope::after { content: ""; position: absolute; left: 9px; top: .22em; width: 2.5px; height: 19px; border-radius: 2px; background: var(--pen); transform: rotate(45deg); }
+  .dict .nope::after { transform: rotate(-45deg); }
+
+  /* ── 事實框 ── */
+  .factbox { margin-top: 16px; padding: 14px 16px 16px; border-radius: 12px; background: var(--pen-soft); border-left: 5px solid var(--pen); font-size: 15px; line-height: 1.8; }
+  .factbox b { display: block; margin-bottom: 3px; font-size: 13px; font-weight: 900; letter-spacing: .06em; color: var(--pen); }
+
+  /* ── 開拍前 ── */
+  .steps { margin-top: 10px; counter-reset: s; }
+  .steps li { counter-increment: s; position: relative; padding: 11px 0 11px 40px; border-top: 1px solid var(--rule); font-size: 15px; line-height: 1.7; }
+  .steps li:last-child { border-bottom: 1px solid var(--rule); }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 10px; width: 28px; height: 28px; border-radius: 7px; background: var(--card); display: grid; place-items: center; font-size: 14px; font-weight: 900; line-height: 1; }
+  .note { margin-top: 18px; padding: 13px 16px 14px; border-radius: 12px; background: var(--card); font-size: 15px; line-height: 1.75; }
+  .note b { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; color: var(--teal); }
+
+  /* ── 拍攝檢核表：聯絡簿。青綠格線、左欄分類、右欄方框勾選，必守用紅筆圈起來 ── */
+  .sheet { margin-top: 18px; border: 2px solid var(--teal); border-radius: 8px; background: var(--paper); overflow: hidden; }
+  .sheet-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .sheet-head > div { min-width: 0; padding: 8px 14px 10px; }
+  .sheet-head > div + div { min-width: 92px; border-left: 1px solid var(--teal-line); text-align: center; }
+  .sheet-head small { display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .14em; color: var(--teal); }
+  .sheet-head b { display: block; font-size: 17px; font-weight: 900; line-height: 1.45; font-variant-numeric: tabular-nums; }
+  .sheet .grp { padding: 4px 14px 5px; border-top: 2px solid var(--teal); background: var(--teal-soft); font-size: 12.5px; font-weight: 700; letter-spacing: .1em; color: var(--teal); }
+  .checks li { border-top: 1px solid var(--teal-line); }
+  .checks label { display: grid; grid-template-columns: 52px minmax(0, 1fr) 50px; cursor: pointer; }
+  .checks .cat { display: grid; place-items: center; padding: 10px 4px; border-right: 1px solid var(--teal-line); font-size: 12.5px; font-weight: 700; line-height: 1.4; text-align: center; color: var(--teal); }
+  .checks .t { min-width: 0; padding: 11px 12px 12px; font-size: 15px; line-height: 1.65; }
+  .checks .bx { position: relative; display: grid; place-items: center; border-left: 1px solid var(--teal-line); }
+  .checks input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .checks .box { width: 22px; height: 22px; border: 2px solid var(--ink); border-radius: 3px; background: var(--paper); display: grid; place-items: center; }
+  .checks .box::after { content: ""; width: 11px; height: 6px; margin-top: -3px; border-left: 2.5px solid var(--ink); border-bottom: 2.5px solid var(--ink); transform: rotate(-45deg); opacity: 0; }
+  .checks input:checked + .box { background: var(--sun); }
+  .checks input:checked + .box::after { opacity: 1; }
+  .checks input:focus-visible + .box { outline: 3px solid var(--teal); outline-offset: 2px; }
+  .checks li.must .t { font-weight: 700; }
+  .mustmark { display: inline-block; margin: -2px 8px -2px -1px; padding: 0 7px 1px; border: 1.5px solid var(--pen); border-radius: 58% 42% 52% 48% / 55% 48% 52% 45%; transform: rotate(-5deg); font-style: normal; font-size: 12.5px; font-weight: 900; line-height: 1.6; color: var(--pen); }
+  .checks li.done .t { color: var(--ink-3); text-decoration: line-through; }
+  .checks li.done .mustmark { text-decoration: none; }
+  .sheet-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 9px 14px; border-top: 2px solid var(--teal); font-size: 12.5px; color: var(--ink-2); }
+  .sheet-foot .mustmark { margin: 0 4px 0 0; }
+  .sheet-foot button { flex: 0 0 auto; background: none; border: 1px solid var(--ink-3); border-radius: 999px; padding: 3px 12px; font-size: 12.5px; color: var(--ink-2); cursor: pointer; }
+
+  /* ── 收尾 ── */
+  .closing { margin-top: 64px; background: var(--ink); color: #fff; }
+  .closing .wrap { padding-block: 40px 44px; }
+  .closing small { font-size: 12px; font-weight: 700; letter-spacing: .14em; color: var(--sun); }
+  .closing h2 { margin-top: 6px; font-size: 28px; line-height: 1.4; }
+  .closing p { margin-top: 10px; font-size: 15.5px; opacity: .92; max-width: 30em; }
+  footer.site { padding-block: 20px 40px; font-size: 12.5px; line-height: 1.9; color: var(--ink-3); }
+  footer.site b { font-weight: 700; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+
+  @media (min-width: 560px) {
+    :root { --gutter: 24px; }
+    .picker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .kv > div { display: grid; grid-template-columns: 148px minmax(0, 1fr); column-gap: 16px; align-items: baseline; }
+    .kv dd { margin-top: 0; }
+    .segc dl > div { display: grid; grid-template-columns: 92px minmax(0, 1fr); column-gap: 12px; align-items: baseline; }
+    .segc dd { margin-top: 0; }
+    .segc .pt { margin-top: 0; }
+    .cuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .ba { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .dict-head { display: grid; grid-template-columns: 84px minmax(0, 1fr) minmax(0, 1fr); column-gap: 18px; margin-top: 20px; font-size: 12.5px; font-weight: 700; color: var(--ink-3); }
+    .dict { margin-top: 6px; }
+    .dict > li { grid-template-columns: 84px minmax(0, 1fr) minmax(0, 1fr); column-gap: 18px; align-items: start; }
+    .dict .tp { padding-top: 2px; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar" id="topbar">
+  <div class="progress" aria-hidden="true"><i id="prog"></i></div>
+  <div class="topline">
+    <span class="brandmark">51Talk 拍攝指南</span>
+    <button class="ep-pill" id="epPill" type="button" data-go="pick" aria-label="換一份企劃"><b id="epPillNo"></b><span id="epPillName"></span></button>
+  </div>
+  <nav class="navrow" id="navrow" aria-label="章節">
+    <button type="button" data-go="reels">範例</button>
+    <button type="button" data-go="pick">企劃</button>
+    <button type="button" data-go="about">這支片</button>
+    <button type="button" data-go="must">三件事</button>
+    <button type="button" data-go="flow">架構</button>
+    <button type="button" data-go="segs">每一段</button>
+    <button type="button" data-go="hook">開場</button>
+    <button type="button" data-go="ba">前後</button>
+    <button type="button" data-go="say">賣點</button>
+    <button type="button" data-go="dict">說法</button>
+    <button type="button" data-go="fact">必守</button>
+    <button type="button" data-go="howto">拍法</button>
+    <button type="button" data-go="prep">開拍前</button>
+    <button type="button" data-go="post">交片</button>
+    <button type="button" data-go="rules">約定</button>
+    <button type="button" data-go="sheet">檢核</button>
+  </nav>
+</div>
+
+<header class="hero wrap">
+  <p class="eyebrow">Creator Guide 2027</p>
+  <h1><span class="signword"><span>51Talk</span></span><span class="sub">2027 創作者拍攝指南</span></h1>
+  <p class="lede">一支 3 分 30 秒內的主片，我們再幫你剪成五支短片。</p>
+  <p class="lede-2" id="heroNote">先選你的企劃，下面每一節都會換成你的版本。</p>
+  <dl class="specs">
+    <div><dt>主片</dt><dd>3 分 30 秒內</dd></div>
+    <div><dt>短片</dt><dd>我們剪 5 支</dd></div>
+    <div><dt>畫面</dt><dd>直式 9:16</dd></div>
+  </dl>
+</header>
+
+<main class="wrap">
+
+  <section id="reels" aria-labelledby="h-reels">
+    <h2 id="h-reels">看看其他創作者怎麼拍</h2>
+    <p class="sec-sub">已經合作過的創作者拍的範例。左右滑動切換，點影片就能播放。</p>
+    <div class="reels" id="reelTrack" tabindex="0" role="region" aria-label="創作者範例影片，可左右捲動"></div>
+    <div class="reels-ctl">
+      <button type="button" id="reelPrev" aria-label="上一支">‹</button>
+      <span id="reelPos" aria-live="polite"></span>
+      <button type="button" id="reelNext" aria-label="下一支">›</button>
+    </div>
+  </section>
+
+  <section id="pick" aria-labelledby="h-pick">
+    <h2 id="h-pick"><span class="hl">選你的企劃</span></h2>
+    <p class="sec-sub">找到你的名字點一下，下面每一節都會換成你的版本。</p>
+    <div class="picker" id="picker" role="radiogroup" aria-labelledby="h-pick"></div>
+    <p class="sr" id="pickLive" aria-live="polite"></p>
+  </section>
+
+  <section id="about" aria-labelledby="h-about">
+    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
+    <h2 id="h-about">這支片在拍什麼</h2>
+    <div class="about" id="aboutCard"></div>
+  </section>
+
+  <section id="must" aria-labelledby="h-must">
+    <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
+    <h2 id="h-must"><span class="hl">三件事一定要拍到</span></h2>
+    <ol class="must3">
+      <li><div><b>第 0 到 3 秒，孩子開口講英文</b><p>第一個畫面就是孩子的英文原音，字卡同時出現。先不要鋪陳，也不要大人先對鏡頭講話。</p></div></li>
+      <li><div><b>20 秒內進到上課實況</b><p>保留孩子開口的原音，配英文字幕。上課實況是全片最長的一段。</p></div></li>
+      <li><div><b>改變用拍的</b><p>「之前」和「之後」都要有畫面，所以「之前」的素材現在就要先留。</p></div></li>
+    </ol>
+  </section>
+
+  <section id="flow" aria-labelledby="h-flow">
+    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
+    <h2 id="h-flow">影片架構</h2>
+    <p class="sec-sub">主片照這個順序走。長條的寬度就是每一段的秒數比例，點任何一段可以跳到那一段的拍法。</p>
+    <div class="bar" id="segBar" role="group"></div>
+    <p class="bar-cap" id="segCap"></p>
+    <ol class="tt" id="flowList"></ol>
+  </section>
+
+  <section id="segs" aria-labelledby="h-segs">
+    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
+    <h2 id="h-segs">每一段怎麼拍</h2>
+    <p class="sec-sub">下面是方向與畫面清單，旁白請用你自己的話講；孩子的英文句子都只是示意。</p>
+    <div class="segs" id="segList"></div>
+  </section>
+
+  <section id="hook" aria-labelledby="h-hook">
+    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
+    <h2 id="h-hook">開場與五支短片</h2>
+    <p class="subhead">主片開場 3 秒</p>
+    <div class="opencard"><small>開場字卡</small><p id="hookCard"></p></div>
+    <dl class="kv" id="hookRows"></dl>
+    <p class="subhead">我們會幫你剪的五支短片</p>
+    <p class="subnote">每支開頭都不一樣，剪好會先給你看過才上線。</p>
+    <ol class="cuts" id="cutList"></ol>
+    <div class="callout plain">
+      <h3>你只需要做三件事</h3>
+      <ul class="ticks">
+        <li>每一段都拍成單獨成立</li>
+        <li>多拍一顆「換開頭版」的開頭</li>
+        <li>交片時附上無字幕版與原始檔</li>
+      </ul>
+    </div>
+    <div class="callout" id="extraBox">
+      <h3>請多拍這一顆開頭</h3>
+      <p id="extraShot"></p>
+    </div>
+  </section>
+
+  <section id="ba" aria-labelledby="h-ba">
+    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
+    <h2 id="h-ba">之前與之後</h2>
+    <p class="sec-sub">改變用拍的。兩邊都要有畫面，所以「之前」的素材現在就要先留。</p>
+    <div class="ba">
+      <div><small>之前</small><p id="baBefore"></p></div>
+      <div class="after"><small>之後</small><p id="baAfter"></p></div>
+    </div>
+  </section>
+
+  <section id="say" aria-labelledby="h-say">
+    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
+    <h2 id="h-say">可以講的賣點</h2>
+    <p class="sec-sub">賣點只講這裡列出來的，用你自己的話講；一句賣點配一個畫面。</p>
+    <p class="pkg">你的課包<b id="pkgName"></b></p>
+    <div id="sayGroups"></div>
+  </section>
+
+  <section id="dict" aria-labelledby="h-dict">
+    <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
+    <h2 id="h-dict">說法對照與必留關鍵詞</h2>
+    <p class="sec-sub">打圈的請這樣講，打叉的請不要這樣講。</p>
+    <div class="keep" id="keepWords"></div>
+    <div class="dict-head" aria-hidden="true"><span></span><span>請這樣講</span><span>請不要這樣講</span></div>
+    <ul class="dict" id="dictList"></ul>
+  </section>
+
+  <section id="fact" aria-labelledby="h-fact">
+    <div class="sec-eyebrow"><span class="tag pen">必守</span><span class="tag mine">你的版本</span></div>
+    <h2 id="h-fact">一定要守住的事實</h2>
+    <div class="factbox" id="factBox"></div>
+  </section>
+
+  <section id="howto" aria-labelledby="h-howto">
+    <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
+    <h2 id="h-howto">拍法與規格</h2>
+    <dl class="kv strong">
+      <div><dt>畫面</dt><dd>直式 9:16。空間明亮、背景整潔、環境安靜，收音要清楚。</dd></div>
+      <div><dt>字幕</dt><dd>全程上大字幕，靜音也看得懂。字幕不要放太上面或太下面，會被介面遮住。</dd></div>
+      <div><dt>節奏</dt><dd>2 到 4 秒換一顆鏡頭。孩子的英文原音一定要上英文字幕。</dd></div>
+      <div><dt>賣點</dt><dd>一句賣點配一個畫面，不要連續口播念賣點。</dd></div>
+      <div><dt>分段</dt><dd>每一段都拍成單獨看也懂（開頭自帶主詞和字卡），我們才剪得出短片。</dd></div>
+      <div><dt>上課畫面</dt><dd>上課畫面可以用側拍加螢幕錄影，或 App 的課堂回放。入鏡的外師與教材，我們會先向 51Talk 確認可以用。</dd></div>
+      <div><dt>孩子的狀態</dt><dd>孩子不想拍、不想講的時候就改天，不硬拍。</dd></div>
+    </dl>
+  </section>
+
+  <section id="prep" aria-labelledby="h-prep">
+    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
+    <h2 id="h-prep">開拍前</h2>
+    <p class="subhead">請你先做這幾件事</p>
+    <ol class="steps" id="prepList"></ol>
+    <div class="callout" id="askBox">
+      <h3>請先回覆我們</h3>
+      <ul class="ticks" id="askList"></ul>
+    </div>
+    <p class="note" id="timingBox"><b>開拍與上線節奏</b><span id="timingText"></span></p>
+  </section>
+
+  <section id="post" aria-labelledby="h-post">
+    <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
+    <h2 id="h-post">貼文與交片</h2>
+    <p class="sec-sub">以你的 2027 合約為準。</p>
+    <dl class="kv strong">
+      <div><dt>連結與 Hashtag</dt><dd>貼文前三行放專屬連結，連結與 Hashtag 由我們提供（Hashtag 3 到 4 個以內）。</dd></div>
+      <div><dt>品牌合作標籤</dt><dd>貼文要設定「品牌合作」標籤並標註 51Talk，並開放廣告主權限，讓品牌可以在 Facebook 與 Instagram 投放。</dd></div>
+      <div><dt>流程</dt><dd>先對企劃與腳本大綱 → 拍攝 → 初剪 A copy → 修改 → Final。腳本與初剪各以兩次修改為限。</dd></div>
+      <div><dt>課包與外師</dt><dd>課包開通、續課、想固定同一位外師，都先跟知寧窗口說，我們向 51Talk 申請。</dd></div>
+    </dl>
+    <div class="callout" id="deliverBox">
+      <h3>你這支片交片時請附上</h3>
+      <ul class="ticks" id="deliverList"></ul>
+    </div>
+  </section>
+
+  <section id="rules" aria-labelledby="h-rules">
+    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
+    <h2 id="h-rules">本篇約定</h2>
+    <p class="sec-sub">這幾點是你這支片專屬的拍法約定。</p>
+    <dl class="kv strong" id="ruleList"></dl>
+  </section>
+
+  <section id="sheet" aria-labelledby="h-sheet">
+    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
+    <h2 id="h-sheet">拍攝檢核表</h2>
+    <p class="sec-sub" id="sheetSub">交片前逐項勾一遍。勾選只存在你這支手機的瀏覽器裡，不會傳給任何人；每份企劃分開記。</p>
+    <div class="sheet">
+      <div class="sheet-head">
+        <div><small>企劃</small><b id="sheetTitle"></b></div>
+        <div><small>完成</small><b id="sheetCount" aria-live="polite"></b></div>
+      </div>
+      <div id="checkList"></div>
+      <div class="sheet-foot"><span><i class="mustmark">必</i>紅筆圈起來的是必拍、必守</span><button type="button" id="resetChecks">全部清除</button></div>
+    </div>
+  </section>
+
+</main>
+
+<div class="closing">
+  <div class="wrap">
+    <small>最後</small>
+    <h2><span class="nw">先拍到孩子開口，</span><span class="nw">剩下的我們一起完成</span></h2>
+    <p>課包、時程或拍法有任何問題，都先跟知寧窗口說。</p>
+  </div>
+</div>
+<footer class="site wrap">
+  版本 <b>2026.10</b>　知寧創意 × 51Talk
+</footer>
+
+<script>
+/* ═════════ 內容資料 ═════════ */
+
+var STORE = 'talk51-guide-v1';   // localStorage 前綴。主題有增刪或重排時把版號加一，避免舊勾選對到新題目
+
+/* 每位創作者的主題資料：由 assemble.py 從 themes 資料夾的 json 灌入，不要直接改這一行。
+   結構見規格書第二節，另外多一個 img 欄位（等於 key，對應照片檔名） */
+var THEMES = [
+  {
+    n: 1,
+    key: 'bird',
+    img: 'bird',
+    name: '鳥先生&鳥夫人',
+    kid: '波波',
+    angle: '波波的夏令營任務：自己先用英文開口',
+    title: '第三集｜波波的夏令營任務：自己先開口',
+    intro: '這支片只追一個任務：波波到了夏令營，自己先用英文開口。出任務本來就是你們家常用的拍法，主體是出發前她在家跟外師練開口，在家就拍得到，輪輪當過來人。夏令營的細節我們還沒跟你們對過，所以開場和收尾都先準備了備案。',
+    package: '牛津課包',
+    length: '3:20',
+    segs: [
+      {
+        name: '成果開場',
+        start: '0:00',
+        end: '0:05',
+        what: '夏令營早上，請鳥先生近拍背著書包的波波，她對眼前的人自己先用英文開口（名字加一句話），不是對著鏡頭講。第 3 秒直接切回家裡書桌，她對著外師講同一句。',
+        sound: '現場原音加英文字幕（示意：Hi, I\'m…）。字卡：7 歲，國外夏令營自己先用英文開口／在家跟 51Talk 外師練',
+        point: '成果先出場，外師入鏡',
+        tip: '校門外優先，請帶到營隊招牌或名牌；其次回住處後、出門前。要有名字加一句話，不要只有問候。片頭不上「第三集」。'
+      },
+      {
+        name: '反差',
+        start: '0:05',
+        end: '0:17',
+        what: '輪輪和波波把任務卡貼到書桌旁，她把那句英文講給哥哥聽。中間各插 1 秒舊片：第一集她提到夏令營的那一幕（成片有才用）、第二集的郵輪、2024 年輪輪的沙巴遊學。',
+        sound: '鳥夫人旁白方向：她在家敢講，到國外自己跟陌生老師開口是第一次。請用你的話說。字卡：任務　自己先用英文開口',
+        point: '在家敢講，出國第一次',
+        tip: '旁白落在任務卡和沙巴畫面上，別疊在郵輪那 1 秒。舊片只小字標集數與年月。她若在國外上過課，「第一次」請換說法。'
+      },
+      {
+        name: '上課實況',
+        start: '0:17',
+        end: '1:12',
+        what: '書桌固定一個側拍鏡位，加上平板螢幕畫面，連拍好幾天、每天換衣服。內容以課堂原本就有的問候、自我介紹、問答為主；營隊用得到的句子，外師願意帶再加。',
+        sound: '對話原音加中英字幕（示意：I like…）。字卡：51Talk 外師 1 對 1，等她自己講完',
+        point: '外師 1 對 1，多開口',
+        tip: '出發倒數用後製疊上去就好。她講到一半卡住、又自己講完的片段請留著，上課版開頭會用；沒有就用她講最長的一句。'
+      },
+      {
+        name: '願意學',
+        start: '1:12',
+        end: '1:38',
+        what: '上課時間到了，鳥先生故意鬧她別上，拍她的真實反應。接著她自己開平板跟外師打招呼，再接任務遊戲過關、小精靈獎勵，以及遊戲時間到時她的真實反應。',
+        sound: '現場原音加遊戲音效。字卡：任務遊戲，為了過關用英文／小精靈獎勵／遊戲一次限約 15 分鐘',
+        point: '任務遊戲與小精靈',
+        tip: '兩個反應都拍真實發生的，不設計結果，也不用要求她一定要自己放下平板。'
+      },
+      {
+        name: '家長放心',
+        start: '1:38',
+        end: '2:04',
+        what: '孩子睡了以後，你們兩位在沙發上看課堂錄影回放和學習紀錄，拿著任務卡對一下進度。再接 App 的 AI 學習狀況畫面，以及老師頁的標籤。',
+        sound: '回放原音墊在底下。字卡：沒陪上課，晚上看回放／AI 幫忙看程度，外師陪她開口／老師選拔通過率約 3%',
+        point: '學習紀錄、AI、師資',
+        tip: '老師頁請遮住其他人的姓名。通過率那張字卡壓在老師頁畫面上，不要壓在 AI 畫面上。'
+      },
+      {
+        name: '好安排',
+        start: '2:04',
+        end: '2:24',
+        what: '客廳一個鏡頭同框：波波在前景跟外師講英文，輪輪寫功課，果弟在玩，沒有人需要出門。接著是塞滿的行事曆，鳥夫人用手機約當天稍晚的課。',
+        sound: '上課原音墊在底下。旁白方向：三個小孩的時間很難排。字卡：24 小時都能排／最晚上課前 1 小時預約／不用接送',
+        point: '24 小時彈性約課',
+        tip: '波波和平板放前景，輪輪、果弟在後景，他們要不要入鏡由你們決定。這顆會當賣點版的開頭，請拍成單獨看也懂。'
+      },
+      {
+        name: '前後對比',
+        start: '2:24',
+        end: '2:58',
+        what: '之前：她出國遇到外國人的真實反應。之後：行前最後一堂她主動開口。最後用分割畫面，左邊是行前第一次練習，右邊是營隊早上的同一句。',
+        sound: '行前原音接營隊現場原音，都上英文字幕。字卡：出發前第一次練習／夏令營早上自己先開口。日期只標年月。',
+        point: '從練習到自己開口',
+        tip: '沒錄到「之前」或她已經會主動，這顆就不用，對比靠分割畫面加行前最後一堂。右邊若是回住處後拍的，字卡拿掉「早上」。'
+      },
+      {
+        name: '收尾',
+        start: '2:58',
+        end: '3:20',
+        what: '鳥先生送她出門捨不得走，被鳥夫人拉走，校門外或住處門口都可以。接著輪輪和波波對著任務卡擊掌、鳥夫人抱住她，最後接結尾卡。',
+        sound: '鳥夫人旁白方向：用你自己的話講這趟看到的波波，我們不指定句子。字卡：讓孩子有更多選擇／免費體驗課',
+        point: '價值句＋免費體驗課',
+        tip: '擊掌和擁抱請在出發前先拍一版，上課版和賣點版的結尾會用到。'
+      }
+    ],
+    hook: {
+      card: '7 歲，國外夏令營自己先用英文開口',
+      shot: '夏令營早上，鳥先生近拍背著書包的波波，她對眼前的人開口，臉和英文原音都在第 0 秒。第 3 秒硬切回家裡書桌的同一句，字卡後半「在家跟 51Talk 外師練」同時出現。',
+      line: 'Hi, I\'m …（示意：名字再加一句話，以她現場真的講的為準）',
+      backup: '校門外拍不到，就用回住處後或出門前她對真人講的版本，再搭備用那顆（她對外國人開口）。行程如果延後，改拍出發前她在行李箱旁講這句。',
+      cuts: [
+        { type: '成果版', seconds: 15, opening: '她背著書包先開口。字卡：7 歲，國外夏令營自己先用英文開口', from: '1＋7＋8' },
+        { type: '上課版', seconds: 30, opening: '她開口講到一半卡住，自己把話講完。字卡：7 歲　外師等她講完', from: '3＋4＋8' },
+        { type: '故事版', seconds: 45, opening: '任務卡前，她把英文講給哥哥聽。字卡：7 歲波波的英文任務', from: '2＋3＋7＋8' },
+        { type: '賣點版', seconds: 30, opening: '客廳三個孩子同框，她跟外師講英文。字卡：英文課不用接送', from: '6＋5＋4＋8' },
+        { type: '換開頭版', seconds: 60, opening: '她上課中，媽媽小聲說擔心的事。字卡：會講英文卻不敢開口？', from: '新＋3＋7＋8' }
+      ],
+      extra_shot: '鳥夫人在前景湊近鏡頭，小聲講一句你擔心的事，不超過 2 秒。波波在後面書桌跟外師對話，她的英文原音要聽得到。'
+    },
+    before_after: {
+      before: '「之前」請現在就開始留：出發前如果還有出國行程，錄下她遇到外國人的真實反應，沒有就略過。行前第一次練習請錄到，分割畫面的左邊會用。',
+      after: '行前最後一堂她主動開口的片段，從多天素材裡挑真實發生的；沒有就用她講得最長的一段。再加營隊拍到的同一句，放分割畫面右邊。'
+    },
+    say: [
+      { id: 'one2one', how: '第 3 段書桌上課實況，外師等她自己把話講完，用她的原音帶出來。' },
+      { id: 'game', how: '第 4 段她為了過關用英文、拿到小精靈獎勵，字卡補上遊戲一次限約 15 分鐘。' },
+      { id: 'replay', how: '第 5 段孩子睡了以後，你們在沙發上看課堂錄影回放和學習紀錄。' },
+      { id: 'ai', how: '第 5 段接 App 的 AI 學習狀況畫面，字卡：AI 幫忙看程度，外師陪她開口。' },
+      { id: 'flex', how: '第 6 段客廳同框沒人需要出門，鳥夫人用手機約當天稍晚的課。' }
+    ],
+    fact: [
+      '事實框（必守）',
+      '全片不出現堂數，也不講「一年前」「學了一年」，字卡只標年月。對比拍「在家敢講，到國外自己先開口」，不拍成從不會到會。郵輪只當 1 秒回顧，不說成學習成果。沙巴舊片寫「遊學」，不寫夏令營。第一集她的原話，重看成片確認前先不引用。舊素材只用畫面裡只有自家孩子的鏡頭；她對外國人開口那顆，對方背對鏡頭或先徵得同意。'
+    ],
+    prep: [
+      '出發前如果還有出國行程，請錄下波波遇到外國人的真實反應，當「之前」的畫面。',
+      '出發前四到六週開拍，先試錄一堂；螢幕錄不到就改拍平板過肩鏡頭，或當天把回放另存。',
+      '先跟波波定好「那句」（名字加一句話），行前第一次練習和最後一堂都要錄到。',
+      '開拍前先做好任務卡，寫上「自己先用英文開口」，第一天開拍就貼到書桌旁。',
+      '找出第一集、郵輪、沙巴遊學的舊片，只挑只有自家孩子的鏡頭，並重看第一集她當時怎麼說。',
+      '郵輪、沙巴舊片當時如果有配合的業者，請確認畫面能不能再使用。'
+    ],
+    ask: [
+      '夏令營目前預計去哪一國、去幾週、哪幾個孩子去？校門外方便拍嗎？',
+      '波波之前在國外上過課嗎？她現在遇到外國人，會自己先開口嗎？',
+      '波波目前大概排哪幾天上課？如果暫停中也請說一聲。上課時平板可以錄螢幕嗎？'
+    ],
+    rules: [
+      ['這幾項請守住', '開場的成果畫面與字卡、20 秒內進上課實況、各段賣點字卡的用語（含最晚上課前 1 小時預約）、結尾的價值句與免費體驗課。其他秒數與鏡頭順序，你們回腳本時可以自己調。'],
+      ['營隊期間', '校門外、回住處後、出門前，建議三個地方每天都拍一點，之後好挑。另外請拍一次她對外國人開口當備用，場景選你們能掌握的，例如住處櫃台或接送人員。她不想講就隔天。'],
+      ['行程有變時', '夏令營若延後或取消，開場改用出發前行李箱旁那句，字卡換成「出發前　這句她在家練過」，第 7 段字卡後半改標行前最後一堂。'],
+      ['家人的角色', '輪輪當聽她講的人和過來人，教英文交給外師。鳥先生的搞笑建議放三個地方：鬧她別上課、晚上看回放、送她出門捨不得走，都拍真實反應。']
+    ],
+    deliver: [
+      '行前第一次練習與最後一堂的完整原始檔',
+      '開場三處各版本，與她對外國人開口的備用那顆，拍到的都附上',
+      '收尾兩版：出發前先拍的那版與營隊那版',
+      '換開頭版多拍的那顆開頭（鳥夫人小聲講一句）',
+      '「之前」的出國畫面與用到的舊片：第一集、郵輪、沙巴遊學'
+    ],
+    timing: '建議出發前四到六週開拍，先試錄一堂。主片等營隊回來再剪，交片和上線時間再跟你們約。',
+    check: [
+      ['開場', '第 0 秒是波波對眼前的人開口，名字加一句話', true],
+      ['開場', '片頭沒有「第三集」字樣，集數只小字標在舊片', true],
+      ['開場', '第 3 秒切回家裡書桌的同一句', true],
+      ['上課', '20 秒內進上課實況，書桌固定鏡位', true],
+      ['賣點', '任務遊戲、小精靈、回放、AI 畫面都有拍到', true],
+      ['賣點', '老師頁已遮住其他人的姓名', true],
+      ['對比', '行前第一次練習與最後一堂都有錄到', true],
+      ['對比', '若出發前有出國，已錄下她遇到外國人的反應', false],
+      ['收尾', '擊掌與擁抱在出發前先拍了一版', true],
+      ['素材', '換開頭版的開頭已多拍一顆', true],
+      ['素材', '舊片只用畫面裡只有自家孩子的鏡頭', true],
+      ['約定', '全片沒有堂數、「一年前」「學了一年」', true]
+    ]
+  }
+];
+
+/* 範例影片：['帳號', 'Reel 代碼']，代碼是網址 /reel/ 後面那段。留空陣列就不顯示這一區 */
+var REELS = [];
+
+/* 可以講的賣點。pkg：all＝共用、oxford＝牛津課包專屬、orig＝原始 51Talk 課包專屬 */
+var SAY_BASE = [
+  { id: 'flex',     pkg: 'all',    name: '24 小時彈性上課',       text: '最晚上課前 1 小時預約，24 小時都能排；不用接送，也不用配合補習班時間。' },
+  { id: 'one2one',  pkg: 'all',    name: '真人外師 1 對 1',       text: '可以依孩子的程度、個性挑老師；孩子有更多時間開口，老師會即時調整節奏。' },
+  { id: 'teachers', pkg: 'all',    name: '全球約 3 萬名教師',     text: '老師具備 TESOL 等教學資格，經過六層選拔，通過率約 3%；有家長評價和教師標籤可以參考。' },
+  { id: 'ai',       pkg: 'oxford', name: 'AI 自適應學習',         text: 'AI 幫忙判斷孩子的程度與節奏，真人老師負責互動與表達。' },
+  { id: 'game',     pkg: 'oxford', name: '任務式遊戲＋小精靈獎勵', text: '孩子為了完成任務而用英文，完成後有小精靈獎勵；遊戲一次約 15 分鐘上限。' },
+  { id: 'replay',   pkg: 'oxford', name: '家長看得見學習過程',     text: 'App 有學習紀錄和課堂錄影回放，不用整堂陪在旁邊。' },
+  { id: 'curr',     pkg: 'orig',   name: '對標 108 課綱',         text: '可以當課後英文輔助，兼顧學校學習與實際開口。' }
+];
+var PKG_LABEL = { oxford: '牛津課包', orig: '原始 51Talk 課包' };
+
+/* 說法對照：[主題, 請這樣講, 請不要這樣講] */
+var DICT = [
+  ['預約',       '最晚上課前 1 小時預約',               '不要講「30 分鐘前」（那是舊的說法）'],
+  ['價格',       '請觀眾點連結看方案',                 '不要講一堂多少錢、不要自己算折扣'],
+  ['成效',       '講你親眼看到的改變，配畫面',           '不要講「保證」「一定會」「幾堂就會講」「考試會加分」'],
+  ['堂數',       '以 App 紀錄的實際堂數為準',           '不要估算或四捨五入成整數'],
+  ['孩子的英文', '用現場原音，講錯也保留',               '不要事後配音、不要照稿背台詞'],
+  ['體驗課',     '說「免費體驗課」，贈品說法以我們提供的為準', '不要自己加贈品或期限'],
+  ['課包',       '只講你這支片主打課包的功能',           '不要把另一個課包的功能講進來']
+];
+
+var KEEP_WORDS = ['51Talk', '真人外師 1 對 1', '免費體驗課'];
+
+/* 檢核表的共用項目，接在每位的專屬項目後面：[分類, 內容, 必守?] */
+var CHECK_SHARED = [
+  ['字幕', '全程大字幕、字幕在安全區內'],
+  ['字幕', '孩子的英文原音都有英文字幕'],
+  ['說法', '預約時限講的是「上課前 1 小時」'],
+  ['說法', '沒有講價格、沒有保證成效'],
+  ['收尾', '結尾有「免費體驗課」'],
+  ['貼文', '貼文前三行有專屬連結'],
+  ['貼文', '已設定品牌合作標籤、標註 51Talk', true],
+  ['貼文', '已開放廣告主權限', true],
+  ['交片', '交片附無字幕版與原始檔']
+];
+
+/* ═════════ 以下為畫面邏輯，通常不用改 ═════════ */
+
+/* 所有插進 DOM 的字串都經過這裡（名字裡有 &、英文台詞裡有 ' 等） */
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function $(id) { return document.getElementById(id); }
+function store(k, v) { try { if (v === undefined) return localStorage.getItem(STORE + '-' + k); localStorage.setItem(STORE + '-' + k, v); } catch (e) { return null; } }
+function imgTag(key, alt) { return (typeof IMG !== 'undefined' && Object.prototype.hasOwnProperty.call(IMG, key)) ? '<img src="' + IMG[key] + '" alt="' + esc(alt) + '" loading="lazy">' : ''; }
+function lis(arr) { return (arr || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join(''); }
+function kvRow(label, html) { return '<div><dt>' + esc(label) + '</dt><dd>' + html + '</dd></div>'; }
+var reduceMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+function go(id) { var el = $(id); if (el) el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' }); }
+
+var SINGLE = THEMES.length === 1;   // 單人版：只灌了一位，不顯示選主題區
+var current = 0;
+
+function themeOf(n) { for (var i = 0; i < THEMES.length; i++) if (THEMES[i].n === n) return THEMES[i]; return null; }
+function numLabel(t) { return SINGLE ? '' : '#' + t.n + ' '; }
+
+/* ── 時間與段落 ── */
+function toSec(s) { var m = /^(\d+):([0-5]?\d)$/.exec(String(s == null ? '' : s).trim()); return m ? +m[1] * 60 + +m[2] : 0; }
+function dur(g) { return Math.max(0, toSec(g.end) - toSec(g.start)); }
+function zhSec(sec) { var m = Math.floor(sec / 60), s = sec % 60, out = []; if (m) out.push(m + ' 分'); if (s || !m) out.push(s + ' 秒'); return out.join(' '); }
+/* 第 1、7 段是成果畫面（黃）、第 3 段是上課實況（青綠），其餘淺灰 */
+function tone(i) { return i === 0 || i === 6 ? 'sun' : i === 2 ? 'teal' : 'plain'; }
+function segLabel(t, n) { return '第 ' + n + ' 段 ' + t.segs[n - 1].name; }
+/* 「…。字卡：…」拆成聲音說明＋字卡兩行 */
+function withCard(s) {
+  s = String(s == null ? '' : s);
+  var m = /字卡[：:]/.exec(s);
+  if (!m) return esc(s);
+  var head = s.slice(0, m.index).trim(), card = s.slice(m.index + m[0].length).trim();
+  return esc(head) + '<span class="zk"><b>字卡</b>' + esc(card) + '</span>';
+}
+
+/* ── 比例條與節次表 ── */
+function renderFlow(t) {
+  var segs = t.segs, total = segs.reduce(function (a, g) { return a + dur(g); }, 0);
+  $('segBar').innerHTML = segs.map(function (g, i) {
+    var d = dur(g);
+    return '<button type="button" class="' + tone(i) + '" style="flex:' + d + ' 1 0" data-seg="' + (i + 1) + '" aria-label="' + esc(segLabel(t, i + 1) + '，' + zhSec(d) + '，跳到這一段的拍法') + '">' +
+      '<b>' + (i + 1) + '</b>' + (total && d / total >= 0.08 ? '<span>' + d + 's</span>' : '') + '</button>';
+  }).join('');
+  $('segBar').setAttribute('aria-label', '主片時間比例，共 ' + segs.length + ' 段，全長 ' + zhSec(total));
+  $('segCap').textContent = '全長 ' + zhSec(toSec(t.length) || total) + '，共 ' + segs.length + ' 段。黃色是成果畫面，青綠是上課實況。';
+  $('flowList').innerHTML = segs.map(function (g, i) {
+    return '<li class="' + tone(i) + '"><button type="button" data-seg="' + (i + 1) + '" aria-label="' + esc(segLabel(t, i + 1) + '，' + g.start + ' 到 ' + g.end + '，跳到這一段的拍法') + '">' +
+      '<span class="no">' + (i + 1) + '</span><span class="nm">' + esc(g.name) + '</span><span class="tm">' + esc(g.start + '–' + g.end) + '・' + zhSec(dur(g)) + '</span></button></li>';
+  }).join('');
+}
+
+/* ── 每一段怎麼拍 ── */
+function renderSegs(t) {
+  var len = t.segs.length;
+  $('segList').innerHTML = t.segs.map(function (g, i) {
+    var n = i + 1, rows = kvRow('畫面', esc(g.what));
+    if (g.sound) rows += kvRow('聲音與字卡', withCard(g.sound));
+    if (g.point) rows += kvRow('帶出的賣點', '<span class="pt">' + esc(g.point) + '</span>');
+    if (g.tip) rows += '<div class="tip"><dt>小提醒</dt><dd>' + esc(g.tip) + '</dd></div>';
+    return '<article class="segc ' + tone(i) + '" id="seg-' + n + '" aria-labelledby="seg-h-' + n + '">' +
+      '<header><span class="pd"><b>' + n + '</b> / ' + len + '</span><div><h3 id="seg-h-' + n + '">' + esc(g.name) + '</h3>' +
+      '<p class="tm">' + esc(g.start + '–' + g.end) + '・' + zhSec(dur(g)) + '</p></div></header><dl>' + rows + '</dl></article>';
+  }).join('');
+}
+
+/* ── 開場與五支短片 ── */
+function fromChips(t, from) {
+  var parts = String(from == null ? '' : from).split(/[＋+、，,\s]+/).filter(Boolean);
+  if (!parts.length) return '';
+  return '<p class="from"><span>用到的段落</span>' + parts.map(function (p) {
+    var n = /^\d+$/.test(p) ? +p : 0;
+    if (n >= 1 && n <= t.segs.length) return '<button type="button" class="chip ' + tone(n - 1) + '" data-seg="' + n + '" aria-label="' + esc(segLabel(t, n) + '，跳到這一段的拍法') + '">' + n + '</button>';
+    return '<span class="chip new">' + esc(p === '新' ? '新拍的開頭' : p) + '</span>';
+  }).join('') + '</p>';
+}
+function renderHook(t) {
+  var h = t.hook;
+  $('hookCard').textContent = h.card;
+  $('hookRows').innerHTML = kvRow('開場畫面', esc(h.shot)) + kvRow('孩子的英文原音（示意）', esc(h.line)) + (h.backup ? kvRow('拍不到時的備案', esc(h.backup)) : '');
+  $('cutList').innerHTML = h.cuts.map(function (c) {
+    return '<li><div class="ch"><b>' + esc(c.type) + '</b><span>約 ' + esc(c.seconds) + ' 秒</span></div><p>' + withCard(c.opening) + '</p>' + fromChips(t, c.from) + '</li>';
+  }).join('');
+  $('extraBox').hidden = !h.extra_shot;
+  $('extraShot').textContent = h.extra_shot || '';
+}
+
+/* ── 可以講的賣點：要帶到／也可以講／這支片不講 ── */
+function pkgOf(t) { return /牛津/.test(t.package) ? 'oxford' : 'orig'; }
+function renderSay(t) {
+  var mine = pkgOf(t), other = mine === 'oxford' ? 'orig' : 'oxford', how = {}, order = [];
+  t.say.forEach(function (s) { if (!(s.id in how)) { how[s.id] = s.how; order.push(s.id); } });
+  function base(id) { for (var i = 0; i < SAY_BASE.length; i++) if (SAY_BASE[i].id === id) return SAY_BASE[i]; return null; }
+  function head(b, label) { return '<div class="sh"><b>' + esc(b.name) + '</b><em>' + label + '</em></div>'; }
+  /* 另一個課包的賣點一律不講，就算資料誤填也以課包為準 */
+  var use = order.map(base).filter(function (b) { return b && b.pkg !== other; });
+  var ok = SAY_BASE.filter(function (b) { return b.pkg !== other && use.indexOf(b) < 0; });
+  var no = SAY_BASE.filter(function (b) { return b.pkg === other; });
+  var html = '';
+  if (use.length) html += '<p class="subhead">這支片要帶到<small>' + use.length + ' 個</small></p><ul class="say">' + use.map(function (b) {
+    return '<li class="use" data-say="' + b.id + '" data-state="use">' + head(b, '這支片要帶到') + '<p class="st">' + esc(b.text) + '</p>' +
+      (how[b.id] ? '<p class="how"><span>在你這支片，用這個畫面帶</span>' + esc(how[b.id]) + '</p>' : '') + '</li>';
+  }).join('') + '</ul>';
+  if (ok.length) html += '<p class="subhead">其他也可以講</p><ul class="say">' + ok.map(function (b) {
+    return '<li class="ok" data-say="' + b.id + '" data-state="ok">' + head(b, b.pkg === 'all' ? '共用' : esc(PKG_LABEL[b.pkg])) + '<p class="st">' + esc(b.text) + '</p></li>';
+  }).join('') + '</ul>';
+  if (no.length) html += '<p class="subhead">這支片不講</p><ul class="say">' + no.map(function (b) {
+    return '<li class="no" data-say="' + b.id + '" data-state="no">' + head(b, '這支片不講') + '<p class="st">這是' + esc(PKG_LABEL[other]) + '的功能，請不要講進這支片。</p></li>';
+  }).join('') + '</ul>';
+  $('pkgName').textContent = t.package;
+  $('sayGroups').innerHTML = html;
+}
+
+/* ── 範例影片 ── */
+function renderReels() {
+  if (!REELS.length) {
+    $('reels').hidden = true;
+    var nb = document.querySelector('#navrow [data-go="reels"]'); if (nb) nb.hidden = true;
+    return;
+  }
+  var embed = document.documentElement.getAttribute('data-embed') === 'on';
+  $('reelTrack').innerHTML = REELS.map(function (r) {
+    var url = 'https://www.instagram.com/reel/' + encodeURIComponent(r[1]) + '/';
+    var media = embed
+      ? '<blockquote class="instagram-media" data-instgrm-permalink="' + url + '?utm_source=ig_embed" data-instgrm-version="14"><a href="' + url + '" target="_blank" rel="noopener">載入 @' + esc(r[0]) + ' 的影片…</a></blockquote>'
+      : '<a class="reel-card" href="' + url + '" target="_blank" rel="noopener"><i class="play" aria-hidden="true"></i><b>@' + esc(r[0]) + '</b><span>在 Instagram 觀看</span></a>';
+    return '<figure class="reel">' + media + '<figcaption><b>@' + esc(r[0]) + '</b><a href="' + url + '" target="_blank" rel="noopener">Instagram ↗</a></figcaption></figure>';
+  }).join('');
+  if (embed) { var sc = document.createElement('script'); sc.async = true; sc.src = 'https://www.instagram.com/embed.js'; document.body.appendChild(sc); }
+  var track = $('reelTrack');
+  function step() { var f = track.querySelector('.reel'); return f ? f.offsetWidth + 12 : track.clientWidth; }
+  function update() {   // 直接在 scroll 事件裡更新，不包 requestAnimationFrame
+    var atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    var i = atEnd ? REELS.length - 1 : Math.round(track.scrollLeft / step());
+    $('reelPos').textContent = Math.min(i + 1, REELS.length) + ' / ' + REELS.length;
+    $('reelPrev').disabled = track.scrollLeft <= 4;
+    $('reelNext').disabled = atEnd;
+  }
+  $('reelPrev').addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: reduceMotion ? 'auto' : 'smooth' }); });
+  $('reelNext').addEventListener('click', function () { track.scrollBy({ left: step(), behavior: reduceMotion ? 'auto' : 'smooth' }); });
+  track.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+}
+
+/* ── 選你的企劃 ── */
+function renderPicker() {
+  $('picker').innerHTML = THEMES.map(function (t) {
+    return '<button type="button" class="ep" role="radio" aria-checked="false" data-ep="' + t.n + '">' +
+      '<span class="th">' + imgTag(t.img, '') + '</span>' +
+      '<span class="tx"><span class="no">#' + t.n + '</span><span class="nm">' + esc(t.name) + '</span><span class="ag">' + esc(t.angle) + '</span></span>' +
+      '<span class="mk" aria-hidden="true"></span></button>';
+  }).join('');
+}
+
+/* ── 換主題：只重畫「你的版本」的插槽，共用內容不動 ── */
+function render(n) {
+  var t = themeOf(n);
+  if (!t) return;
+  current = n;
+
+  document.querySelectorAll('.ep').forEach(function (b) {
+    var on = +b.dataset.ep === n;
+    b.setAttribute('aria-checked', on ? 'true' : 'false');
+    b.tabIndex = on ? 0 : -1;
+  });
+  if (!SINGLE) $('epPillNo').textContent = '#' + n;
+  $('epPillName').textContent = t.name;
+  $('pickLive').textContent = '下面已換成 ' + t.name + ' 的版本';
+
+  $('aboutCard').innerHTML = '<div class="about-head">' + imgTag(t.img, t.name) + '<div>' + (SINGLE ? '' : '<small>#' + t.n + '</small>') + '<b>' + esc(t.name) + '</b></div></div>' +
+    '<h3>' + esc(t.title) + '</h3><p>' + esc(t.intro) + '</p><dl class="about-facts">' +
+    '<div><dt>主角</dt><dd>' + esc(t.kid) + '</dd></div><div><dt>課包</dt><dd>' + esc(t.package) + '</dd></div><div><dt>全長</dt><dd>' + esc(zhSec(toSec(t.length))) + '</dd></div></dl>';
+
+  renderFlow(t);
+  renderSegs(t);
+  renderHook(t);
+  $('baBefore').textContent = t.before_after.before;
+  $('baAfter').textContent = t.before_after.after;
+  renderSay(t);
+
+  var hasFact = !!(t.fact && t.fact[1]);
+  $('fact').hidden = !hasFact;
+  document.querySelector('#navrow [data-go="fact"]').hidden = !hasFact;
+  $('factBox').innerHTML = hasFact ? '<b>' + esc(t.fact[0]) + '</b>' + esc(t.fact[1]) : '';
+
+  $('prepList').innerHTML = lis(t.prep);
+  $('askBox').hidden = !(t.ask && t.ask.length);
+  $('askList').innerHTML = lis(t.ask);
+  $('timingBox').hidden = !t.timing;
+  $('timingText').textContent = t.timing || '';
+
+  $('deliverBox').hidden = !(t.deliver && t.deliver.length);
+  $('deliverList').innerHTML = lis(t.deliver);
+
+  var hasRules = !!(t.rules && t.rules.length);
+  $('rules').hidden = !hasRules;
+  document.querySelector('#navrow [data-go="rules"]').hidden = !hasRules;
+  $('ruleList').innerHTML = (t.rules || []).map(function (r) { return kvRow(r[0], esc(r[1])); }).join('');
+
+  renderChecks(t);
+
+  if (!SINGLE) {
+    try { history.replaceState(null, '', '#ep' + n); } catch (err) {}
+    store('ep', String(n));
+  }
+}
+
+/* ── 檢核表：主題專屬項目（t0、t1…）在前，共用項目（s0、s1…）在後；勾選每個主題分開存 ── */
+function renderChecks(t) {
+  var key = 'checks-ep' + t.n, saved = {};
+  try { saved = JSON.parse(store(key) || '{}') || {}; } catch (err) { saved = {}; }
+  function rows(list, prefix) {
+    return list.map(function (c, i) {
+      var k = prefix + i, id = 'chk-' + t.n + '-' + k;
+      return '<li' + (c[2] ? ' class="must"' : '') + '><label for="' + id + '"><span class="cat">' + esc(c[0]) + '</span>' +
+        '<span class="t">' + (c[2] ? '<i class="mustmark">必</i>' : '') + esc(c[1]) + '</span>' +
+        '<span class="bx"><input type="checkbox" id="' + id + '" data-k="' + k + '"' + (saved[k] ? ' checked' : '') + '><span class="box" aria-hidden="true"></span></span></label></li>';
+    }).join('');
+  }
+  $('sheetTitle').textContent = numLabel(t) + t.name;
+  $('checkList').innerHTML =
+    '<p class="grp">你這支片</p><ul class="checks" data-group="own">' + rows(t.check || [], 't') + '</ul>' +
+    '<p class="grp">每支片都要</p><ul class="checks" data-group="shared">' + rows(CHECK_SHARED, 's') + '</ul>';
+  function count() {
+    var boxes = document.querySelectorAll('#checkList input'), done = 0, state = {};
+    boxes.forEach(function (b) {
+      if (b.checked) { done++; state[b.dataset.k] = 1; }
+      b.closest('li').classList.toggle('done', b.checked);
+    });
+    $('sheetCount').textContent = done + ' / ' + boxes.length;
+    store(key, JSON.stringify(state));
+  }
+  $('checkList').onchange = count;
+  $('resetChecks').onclick = function () { document.querySelectorAll('#checkList input').forEach(function (b) { b.checked = false; }); count(); };
+  count();
+}
+
+/* ── 共用區塊 ── */
+function renderShared() {
+  $('keepWords').innerHTML = '<span>這幾個詞請保留原字</span>' + KEEP_WORDS.map(function (w) { return '<span class="kw">' + esc(w) + '</span>'; }).join('');
+  $('dictList').innerHTML = DICT.map(function (d) {
+    return '<li><span class="tp">' + esc(d[0]) + '</span><span class="yes"><span class="sr">請這樣講：</span>' + esc(d[1]) + '</span><span class="nope"><span class="sr">請不要這樣講：</span>' + esc(d[2]) + '</span></li>';
+  }).join('');
+}
+
+function themeFromHash() {
+  var m = /^#ep(\d+)$/.exec(location.hash || '');
+  return m && themeOf(+m[1]) ? +m[1] : 0;
+}
+
+/* 單人版：不顯示選主題區，頂部 pill 只當名牌，不切換 */
+function setupSingle() {
+  $('pick').hidden = true;
+  document.querySelector('#navrow [data-go="pick"]').hidden = true;
+  var tag = document.createElement('span');
+  tag.className = 'ep-pill is-static';
+  tag.innerHTML = '<span id="epPillName"></span>';
+  $('epPill').replaceWith(tag);
+  $('heroNote').textContent = '這一頁是為你準備的版本，照著章節往下看就可以。';
+  $('sheetSub').textContent = '交片前逐項勾一遍。勾選只存在你這支手機的瀏覽器裡，不會傳給任何人。';
+}
+
+function wire() {
+  /* 章節 pill、頂部主題 pill（data-go）與所有跳到某一段的按鈕（data-seg）共用一個監聽 */
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-seg], [data-go]');
+    if (b) go(b.dataset.seg ? 'seg-' + b.dataset.seg : b.dataset.go);
+  });
+
+  if (!SINGLE) {
+    $('picker').addEventListener('click', function (ev) { var b = ev.target.closest('.ep'); if (b) render(+b.dataset.ep); });
+    $('picker').addEventListener('keydown', function (ev) {
+      var k = ev.key, len = THEMES.length, i = THEMES.indexOf(themeOf(current)), n;
+      if (k === 'ArrowDown' || k === 'ArrowRight') n = THEMES[(i + 1) % len].n;
+      else if (k === 'ArrowUp' || k === 'ArrowLeft') n = THEMES[(i + len - 1) % len].n;
+      else return;
+      ev.preventDefault(); render(n);
+      document.querySelector('.ep[data-ep="' + n + '"]').focus();
+    });
+    window.addEventListener('hashchange', function () {
+      var n = themeFromHash();
+      if (n) { if (n !== current) render(n); }
+      else if (/^#ep/.test(location.hash)) { try { history.replaceState(null, '', '#ep' + current); } catch (err) {} }   // 不合法的 #ep 退回目前這一份
+    });
+  }
+
+  var navBtns = [].slice.call(document.querySelectorAll('#navrow button'));
+  var last = null;
+  function onScroll() {
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    $('prog').style.width = (max > 0 ? Math.min(100, h.scrollTop / max * 100) : 0) + '%';
+    var active = null;
+    navBtns.forEach(function (b) {   // 每次都重新看哪些 pill 還在（事實框、約定會跟著主題出現或隱藏）
+      var el = $(b.dataset.go);
+      if (b.hidden || !el || el.hidden) return;
+      if (!active || el.getBoundingClientRect().top < 140) active = b;
+    });
+    if (active && active !== last) {
+      if (last) last.classList.remove('on');
+      active.classList.add('on');
+      var nr = $('navrow');
+      nr.scrollTo({ left: active.offsetLeft - nr.clientWidth / 2 + active.clientWidth / 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+      last = active;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+function boot() {
+  renderReels();
+  renderShared();
+  if (!THEMES.length) return;   // 還沒灌資料的範本：只顯示共用內容
+  if (SINGLE) setupSingle(); else renderPicker();
+  render(SINGLE ? THEMES[0].n : (themeFromHash() || (themeOf(+store('ep')) ? +store('ep') : THEMES[0].n)));
+  wire();
+}
+</script>
+<script>
+var IMG = {
+  bird: "data:image/jpeg;base64,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"
+};
+</script>
+<script>boot();</script>
+</body>
+</html>
