@@ -245,6 +245,7 @@
   .ba small { display: inline-block; font-size: 12px; font-weight: 900; letter-spacing: .12em; line-height: 1.7; border-radius: 5px; padding: 0 9px; background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--ink); }
   .ba .after small { background: var(--sun); box-shadow: none; }
   .ba p { margin-top: 7px; font-size: 15px; line-height: 1.75; }
+  .ba p.all { font-weight: 900; }
 
   /* ── 可以講的賣點 ── */
   .pkg { display: inline-flex; align-items: baseline; gap: 8px; max-width: 100%; margin-top: 14px; padding: 5px 15px 6px 13px; border: 2px solid var(--ink); border-radius: 999px; background: var(--sun-soft); font-size: 13.5px; line-height: 1.5; }
@@ -374,11 +375,8 @@
     <button type="button" data-go="ba">前後</button>
     <button type="button" data-go="say">賣點</button>
     <button type="button" data-go="dict">說法</button>
-    <button type="button" data-go="fact">必守</button>
-    <button type="button" data-go="howto">拍法</button>
-    <button type="button" data-go="prep">開拍前</button>
-    <button type="button" data-go="post">交片</button>
-    <button type="button" data-go="rules">約定</button>
+    <button type="button" data-go="howto">小提醒</button>
+    <button type="button" data-go="post">注意事項</button>
     <button type="button" data-go="sheet">檢核</button>
     <button type="button" data-go="collab">合作設定</button>
   </nav>
@@ -415,23 +413,20 @@
   </section>
 
   <section id="about" aria-labelledby="h-about">
-    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
     <h2 id="h-about">這支片在拍什麼</h2>
     <div class="about" id="aboutCard"></div>
   </section>
 
   <section id="must" aria-labelledby="h-must">
-    <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
     <h2 id="h-must"><span class="hl">三件事一定要拍到</span></h2>
     <ol class="must3">
       <li><div><b>第 0 到 3 秒，孩子開口講英文</b><p>第一個畫面就是孩子的英文原音，字卡同時出現。先不要鋪陳，也不要大人先對鏡頭講話。</p></div></li>
       <li><div><b>20 秒內進到上課實況</b><p>保留孩子開口的原音，配英文字幕。上課實況是全片最長的一段。</p></div></li>
-      <li><div><b>改變用拍的</b><p>「之前」和「之後」都要有畫面，所以「之前」的素材現在就要先留。</p></div></li>
+      <li><div><b>改變用拍的</b><p>Before 和 After 都要有畫面，所以 Before 的素材現在就要先留。</p></div></li>
     </ol>
   </section>
 
   <section id="flow" aria-labelledby="h-flow">
-    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
     <h2 id="h-flow">影片架構</h2>
     <p class="sec-sub">主片可以參考這個架構規劃，點擊可以跳到那一段的內容說明</p>
     <div class="bar" id="segBar" role="group"></div>
@@ -440,47 +435,28 @@
   </section>
 
   <section id="segs" aria-labelledby="h-segs">
-    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
     <h2 id="h-segs">每一段靈感發想說明</h2>
     <p class="sec-sub">畫面參考＆發想目的，並非一定要照這樣去拍攝唷！</p>
     <div class="segs" id="segList"></div>
   </section>
 
   <section id="hook" aria-labelledby="h-hook">
-    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
-    <h2 id="h-hook">開場與五支短片</h2>
+    <h2 id="h-hook">開場</h2>
     <p class="subhead">主片開場 3 秒</p>
     <div class="opencard"><small>開場字卡</small><p id="hookCard"></p></div>
     <dl class="kv" id="hookRows"></dl>
-    <p class="subhead">我們會幫你剪的五支短片</p>
-    <p class="subnote">每支開頭都不一樣，剪好會先給你看過才上線。</p>
-    <ol class="cuts" id="cutList"></ol>
-    <div class="callout plain">
-      <h3>你只需要做三件事</h3>
-      <ul class="ticks">
-        <li>每一段都拍成單獨成立</li>
-        <li>多拍一顆「換開頭版」的開頭</li>
-        <li>交片時附上無字幕版與原始檔</li>
-      </ul>
-    </div>
-    <div class="callout" id="extraBox">
-      <h3>請多拍這一顆開頭</h3>
-      <p id="extraShot"></p>
-    </div>
   </section>
 
   <section id="ba" aria-labelledby="h-ba">
-    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
-    <h2 id="h-ba">之前與之後</h2>
-    <p class="sec-sub">改變用拍的。兩邊都要有畫面，所以「之前」的素材現在就要先留。</p>
+    <h2 id="h-ba">Before 與 After</h2>
+    <p class="sec-sub">改變用拍的。兩邊都要有畫面，所以 Before 的素材現在就要先留。</p>
     <div class="ba">
-      <div><small>之前</small><p id="baBefore"></p></div>
-      <div class="after"><small>之後</small><p id="baAfter"></p></div>
+      <div><small>Before</small><p id="baBefore"></p></div>
+      <div class="after"><small>After</small><p class="all">拍上完 30 堂的課程頁面＆當時上課的程度</p><p id="baAfter"></p></div>
     </div>
   </section>
 
   <section id="say" aria-labelledby="h-say">
-    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
     <h2 id="h-say">可以講的賣點</h2>
     <p class="sec-sub">賣點只講這裡列出來的，用你自己的話講；一句賣點配一個畫面。</p>
     <p class="pkg">你的課包<b id="pkgName"></b></p>
@@ -488,7 +464,6 @@
   </section>
 
   <section id="dict" aria-labelledby="h-dict">
-    <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
     <h2 id="h-dict">說法對照與必留關鍵詞</h2>
     <p class="sec-sub">打圈的請這樣講，打叉的請不要這樣講。</p>
     <div class="keep" id="keepWords"></div>
@@ -496,65 +471,27 @@
     <ul class="dict" id="dictList"></ul>
   </section>
 
-  <section id="fact" aria-labelledby="h-fact">
-    <div class="sec-eyebrow"><span class="tag pen">必守</span><span class="tag mine">你的版本</span></div>
-    <h2 id="h-fact">一定要注意的重點</h2>
-    <div class="factbox" id="factBox"></div>
-  </section>
-
   <section id="howto" aria-labelledby="h-howto">
-    <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
-    <h2 id="h-howto">拍法與規格</h2>
+    <h2 id="h-howto">拍攝小提醒</h2>
     <dl class="kv strong">
       <div><dt>畫面</dt><dd>直式 9:16。空間明亮、背景整潔、環境安靜，收音要清楚。</dd></div>
-      <div><dt>字幕</dt><dd>全程上大字幕，靜音也看得懂。字幕不要放太上面或太下面，會被介面遮住。</dd></div>
-      <div><dt>節奏</dt><dd>2 到 4 秒換一顆鏡頭。孩子的英文原音一定要上英文字幕。</dd></div>
-      <div><dt>賣點</dt><dd>一句賣點配一個畫面，不要連續口播念賣點。</dd></div>
-      <div><dt>分段</dt><dd>每一段都拍成單獨看也懂（開頭自帶主詞和字卡），我們才剪得出短片。</dd></div>
-      <div><dt>上課畫面</dt><dd>上課畫面可以用側拍加螢幕錄影，或 App 的課堂回放。入鏡的外師與教材，我們會先向 51Talk 確認可以用。</dd></div>
+      <div><dt>上課畫面</dt><dd>每次上課都架手機側拍，捕捉孩子「開口講句子」的互動瞬間。</dd></div>
       <div><dt>孩子的狀態</dt><dd>孩子不想拍、不想講的時候就改天，不硬拍。</dd></div>
     </dl>
   </section>
 
-  <section id="prep" aria-labelledby="h-prep">
-    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
-    <h2 id="h-prep">開拍前</h2>
-    <p class="subhead">請你先做這幾件事</p>
-    <ol class="steps" id="prepList"></ol>
-    <div class="callout" id="askBox">
-      <h3>請先回覆我們</h3>
-      <ul class="ticks" id="askList"></ul>
-    </div>
-    <p class="note" id="timingBox"><b>開拍與上線節奏</b><span id="timingText"></span></p>
-  </section>
-
   <section id="post" aria-labelledby="h-post">
-    <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
-    <h2 id="h-post">貼文與交片</h2>
+    <h2 id="h-post">注意事項</h2>
     <p class="sec-sub" id="postSub">以你的 2027 合約為準。</p>
     <dl class="kv strong">
       <div><dt>連結與 Hashtag</dt><dd>貼文前三行放專屬連結，連結與 Hashtag 由我們提供（Hashtag 3 到 4 個以內）。</dd></div>
       <div><dt>品牌合作標籤</dt><dd>貼文要設定「品牌合作」標籤並標註 51Talk，並開放廣告主權限，讓品牌可以在 Facebook 與 Instagram 投放。</dd></div>
-      <div><dt>流程</dt><dd>先對企劃與腳本大綱 → 拍攝 → 初剪 A copy → 修改 → Final。腳本與初剪各以兩次修改為限。</dd></div>
-      <div><dt>課包與外師</dt><dd>課包開通、續課、想固定同一位外師，都先跟知寧窗口說，我們向 51Talk 申請。</dd></div>
+      <div><dt>流程</dt><dd>先對企劃與腳本大綱 → 拍攝 → 初剪 A copy → 修改 → B copy → 確認；腳本與初剪各以兩次修改為限。</dd></div>
     </dl>
-    <div class="callout" id="deliverBox">
-      <h3>你這支片交片時請附上</h3>
-      <ul class="ticks" id="deliverList"></ul>
-    </div>
-  </section>
-
-  <section id="rules" aria-labelledby="h-rules">
-    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
-    <h2 id="h-rules">本篇約定</h2>
-    <p class="sec-sub">這幾點是你這支片專屬的拍法約定。</p>
-    <dl class="kv strong" id="ruleList"></dl>
   </section>
 
   <section id="sheet" aria-labelledby="h-sheet">
-    <div class="sec-eyebrow"><span class="tag mine">你的版本</span></div>
     <h2 id="h-sheet">拍攝檢核表</h2>
-    <p class="sec-sub" id="sheetSub">交片前逐項勾一遍。勾選只存在你這支手機的瀏覽器裡，不會傳給任何人；每份企劃分開記。</p>
     <div class="sheet">
       <div class="sheet-head">
         <div><small>企劃</small><b id="sheetTitle"></b></div>
@@ -566,9 +503,8 @@
   </section>
 
   <section id="collab" aria-labelledby="h-collab">
-    <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
     <h2 id="h-collab">如何設定品牌合作</h2>
-    <p class="sec-sub">發佈貼文時照這三步設定，品牌才能用你的貼文投放廣告。畫面以 Facebook 為例，介面改版後位置可能不同，找不到再問我們。</p>
+    <p class="sec-sub">發佈貼文時照這三步設定，畫面以 Facebook 為例，介面改版後位置可能不同，找不到再問我們唷</p>
     <ol class="steps-img" id="collabSteps"></ol>
   </section>
 
@@ -587,7 +523,7 @@
 <script>
 /* ═════════ 內容資料 ═════════ */
 
-var STORE = 'talk51-guide-v1';   // localStorage 前綴。主題有增刪或重排時把版號加一，避免舊勾選對到新題目
+var STORE = 'talk51-guide-v2';   // localStorage 前綴。主題有增刪或重排時把版號加一，避免舊勾選對到新題目
 
 /* 每位創作者的主題資料：由 assemble.py 從 themes 資料夾的 json 灌入，不要直接改這一行。
    結構見規格書第二節，另外多一個 img 欄位（等於 key，對應照片檔名） */
@@ -681,7 +617,7 @@ var THEMES = [
       card: '小二哥哥用英文講睡前故事｜跟外師練的',
       shot: '任務之夜拍。睡前在孩子房補光拍亮。光光把自己畫的小書舉向川川，開口講第一頁，川川的反應照實拍，華爸在門口被晾在一邊。第一個畫面就是光光開口，第 3 秒跳第二張字卡。',
       line: 'This is my …（示意）。實際講他小書第一頁的句子，以實拍為準，不用照稿。',
-      backup: '川川不想入鏡，聽眾改成華爸或心心。外師沒辦法聽他講小書，第二張字卡改「跟外師學的」。2026 畫面用不了，故事版改用第 1 天接任務之夜。',
+      backup: '川川不想入鏡，聽眾改成華爸或心心。外師沒辦法聽他講小書，第二張字卡改「跟外師學的」。',
       cuts: [
         { type: '成果版', seconds: 15, opening: '光光舉小書對川川講英文。字卡：小二哥哥用英文講睡前故事', from: '1＋3＋8' },
         { type: '上課版', seconds: 30, opening: '光光把小書舉給平板裡的外師。字卡：小二生用英文講給外師聽', from: '3＋8' },
@@ -732,7 +668,6 @@ var THEMES = [
       ['上課', '0:18 進上課實況，是全片最長的一段', true],
       ['上課', '光光講一頁小書或課內問答，原音 20 秒不剪', true],
       ['賣點', '任務遊戲說「用上英文」，15 分鐘講成上限', true],
-      ['素材', '「換開頭版」的開頭已多拍一顆', true],
       ['對比', '現在已先錄好基準畫面', true],
       ['對比', '第 1 天與任務之夜同位置、同小書、同鏡位', true],
       ['對比', '對比用前後硬切，光光原音不剪、不提詞', true],
@@ -855,25 +790,11 @@ function renderSegs(t) {
   }).join('');
 }
 
-/* ── 開場與五支短片 ── */
-function fromChips(t, from) {
-  var parts = String(from == null ? '' : from).split(/[＋+、，,\s]+/).filter(Boolean);
-  if (!parts.length) return '';
-  return '<p class="from"><span>用到的段落</span>' + parts.map(function (p) {
-    var n = /^\d+$/.test(p) ? +p : 0;
-    if (n >= 1 && n <= t.segs.length) return '<button type="button" class="chip ' + tone(n - 1) + '" data-seg="' + n + '" aria-label="' + esc(segLabel(t, n) + '，跳到這一段的拍法') + '">' + n + '</button>';
-    return '<span class="chip new">' + esc(p === '新' ? '新拍的開頭' : p) + '</span>';
-  }).join('') + '</p>';
-}
+/* ── 開場 ── */
 function renderHook(t) {
   var h = t.hook;
   $('hookCard').textContent = h.card;
   $('hookRows').innerHTML = kvRow('開場畫面', esc(h.shot)) + kvRow('孩子的英文原音（示意）', esc(h.line)) + (h.backup ? kvRow('拍不到時的備案', esc(h.backup)) : '');
-  $('cutList').innerHTML = h.cuts.map(function (c) {
-    return '<li><div class="ch"><b>' + esc(c.type) + '</b><span>約 ' + esc(c.seconds) + ' 秒</span></div><p>' + withCard(c.opening) + '</p>' + fromChips(t, c.from) + '</li>';
-  }).join('');
-  $('extraBox').hidden = !h.extra_shot;
-  $('extraShot').textContent = h.extra_shot || '';
 }
 
 /* ── 可以講的賣點：要帶到／也可以講／這支片不講 ── */
@@ -970,25 +891,7 @@ function render(n) {
   $('baAfter').textContent = t.before_after.after;
   renderSay(t);
 
-  var hasFact = !!(t.fact && t.fact[1]);
-  $('fact').hidden = !hasFact;
-  document.querySelector('#navrow [data-go="fact"]').hidden = !hasFact;
-  $('factBox').innerHTML = hasFact ? '<b>' + esc(t.fact[0]) + '</b>' + esc(t.fact[1]) : '';
-
-  $('prepList').innerHTML = lis(t.prep);
-  $('askBox').hidden = !(t.ask && t.ask.length);
-  $('askList').innerHTML = lis(t.ask);
-  $('timingBox').hidden = !t.timing;
-  $('timingText').textContent = t.timing || '';
-  $('postSub').textContent = t.status ? '這一節是合作成立後的作業方式，先給你參考；細節以雙方簽的內容為準。' : '以你的 2027 合約為準。';
-
-  $('deliverBox').hidden = !(t.deliver && t.deliver.length);
-  $('deliverList').innerHTML = lis(t.deliver);
-
-  var hasRules = !!(t.rules && t.rules.length);
-  $('rules').hidden = !hasRules;
-  document.querySelector('#navrow [data-go="rules"]').hidden = !hasRules;
-  $('ruleList').innerHTML = (t.rules || []).map(function (r) { return kvRow(r[0], esc(r[1])); }).join('');
+  $('postSub').hidden = !!t.status;   // 還在邀約中的人選不寫「以合約為準」
 
   renderChecks(t);
 
@@ -1056,7 +959,6 @@ function setupSingle() {
   tag.className = 'ep-pill is-static';
   tag.innerHTML = '<span id="epPillName"></span>';
   $('epPill').replaceWith(tag);
-  $('sheetSub').textContent = '交片前逐項勾一遍。勾選只存在你這支手機的瀏覽器裡，不會傳給任何人。';
 }
 
 function wire() {
@@ -1089,7 +991,7 @@ function wire() {
     var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
     $('prog').style.width = (max > 0 ? Math.min(100, h.scrollTop / max * 100) : 0) + '%';
     var active = null;
-    navBtns.forEach(function (b) {   // 每次都重新看哪些 pill 還在（事實框、約定會跟著主題出現或隱藏）
+    navBtns.forEach(function (b) {   // 每次都重新看哪些 pill 還在
       var el = $(b.dataset.go);
       if (b.hidden || !el || el.hidden) return;
       if (!active || el.getBoundingClientRect().top < 140) active = b;
