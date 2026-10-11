@@ -531,7 +531,7 @@
   <section id="post" aria-labelledby="h-post">
     <div class="sec-eyebrow"><span class="tag all">每支片都一樣</span></div>
     <h2 id="h-post">貼文與交片</h2>
-    <p class="sec-sub">以你的 2027 合約為準。</p>
+    <p class="sec-sub" id="postSub">以你的 2027 合約為準。</p>
     <dl class="kv strong">
       <div><dt>連結與 Hashtag</dt><dd>貼文前三行放專屬連結，連結與 Hashtag 由我們提供（Hashtag 3 到 4 個以內）。</dd></div>
       <div><dt>品牌合作標籤</dt><dd>貼文要設定「品牌合作」標籤並標註 51Talk，並開放廣告主權限，讓品牌可以在 Facebook 與 Instagram 投放。</dd></div>
@@ -980,6 +980,7 @@ function render(n) {
   $('askList').innerHTML = lis(t.ask);
   $('timingBox').hidden = !t.timing;
   $('timingText').textContent = t.timing || '';
+  $('postSub').textContent = t.status ? '這一節是合作成立後的作業方式，先給你參考；細節以雙方簽的內容為準。' : '以你的 2027 合約為準。';
 
   $('deliverBox').hidden = !(t.deliver && t.deliver.length);
   $('deliverList').innerHTML = lis(t.deliver);
