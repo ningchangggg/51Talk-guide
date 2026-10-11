@@ -8,9 +8,9 @@ SINGLES="/Users/ningchang/Library/Mobile Documents/com~apple~CloudDocs/▲知寧
 [ -f "$SRC" ] || { echo "找不到來源檔：$SRC" >&2; echo "檔案搬過位置的話，請改上面的 SRC。" >&2; exit 1; }
 DIR="$(cd "$(dirname "$0")" && pwd)"
 python3 "$DIR/wrap.py" "$SRC" "$DIR/index.html"
-for k in bird momdad queen mifa tsai zach yutu; do
-  f="$SINGLES/51Talk_2027_拍攝指南_$k.html"
-  [ -f "$f" ] || { echo "找不到單人版：$f" >&2; exit 1; }
+for f in "$SINGLES"/51Talk_2027_拍攝指南_*.html; do
+  [ -f "$f" ] || { echo "找不到單人版：$SINGLES" >&2; exit 1; }
+  k="${f##*_}"; k="${k%.html}"
   mkdir -p "$DIR/$k"
   python3 "$DIR/wrap.py" "$f" "$DIR/$k/index.html"
 done
